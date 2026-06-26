@@ -106,12 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (id === 'input-pis') return 'pis';
     if (id === 'input-salario') return 'salario';
     
-    if (id.includes('data') || 
-        id.includes('nascimento') || 
-        id.includes('emissao') || 
-        id.includes('expedicao') || 
-        className.includes('data') || 
-        className.includes('nasc')) {
+    // Identificação precisa dos campos de data (evitando conflito com local de nascimento)
+    if (id === 'input-data-nascimento' || 
+        id === 'input-data-emissao' || 
+        id === 'input-data-expedicao' || 
+        id === 'input-data-adm' ||
+        className.includes('dep-data-nasc')) {
       return 'date';
     }
     
