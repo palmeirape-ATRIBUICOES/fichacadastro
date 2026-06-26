@@ -522,17 +522,26 @@ input:checked + .slider:before {
     margin: 15mm 15mm 15mm 15mm;
   }
 
-  /* Oculta tudo que pertence ao dashboard da aplicação */
-  body, .app-container {
-    background: #ffffff !important;
-    height: auto !important;
-    overflow: visible !important;
+  /* Oculta apenas os elementos do painel de controle e menu */
+  .sidebar,
+  .preview-toolbar {
+    display: none !important;
   }
 
-  .sidebar,
-  .preview-toolbar,
+  /* Reseta os containers para que fiquem transparentes e não limitem o conteúdo */
+  .app-container,
+  .preview-area,
   .paper-container {
-    display: none !important;
+    display: block !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    transform: none !important;
   }
 
   /* Define o painel de impressão como elemento principal */
