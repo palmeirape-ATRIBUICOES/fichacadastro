@@ -378,10 +378,10 @@ input:checked + .slider:before {
 /* Visualização A4 Estilizada (Simulação de Impressão na Tela) */
 .print-page {
   width: 210mm;
-  min-height: 297mm;
+  height: 297mm; /* Força altura A4 exata na tela */
   background: #ffffff;
   color: var(--print-text);
-  padding: 20mm;
+  padding: 12mm; /* Margem interna consistente de 12mm */
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
   font-family: 'Montserrat', 'Inter', sans-serif;
   position: relative;
@@ -389,6 +389,7 @@ input:checked + .slider:before {
   /* Garante que o tamanho na tela não fique gigante mas mantenha o aspect ratio */
   transform-origin: top center;
   margin-bottom: 40px;
+  overflow: hidden; /* Evita que transborde visualmente no preview */
 }
 
 /* ==========================================================================
@@ -399,10 +400,10 @@ input:checked + .slider:before {
 .print-header-banner {
   background-color: var(--print-green);
   text-align: center;
-  font-size: 14pt;
+  font-size: 12pt; /* Reduzido de 14pt */
   font-weight: 700;
-  padding: 6px 10px;
-  margin-bottom: 20px;
+  padding: 4px 8px; /* Reduzido de 6px 10px */
+  margin-bottom: 10px; /* Reduzido de 20px */
   border-radius: 2px;
   text-transform: none;
   font-family: 'Montserrat', sans-serif;
@@ -411,14 +412,14 @@ input:checked + .slider:before {
 /* Seções */
 .print-section {
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 6px; /* Reduzido de 12px */
 }
 
 /* Linha do documento */
 .print-row {
   display: flex;
   width: 100%;
-  margin-bottom: 12px; /* Margem entre linhas */
+  margin-bottom: 5px; /* Reduzido de 12px */
 }
 
 /* Colunas do Layout */
@@ -426,7 +427,7 @@ input:checked + .slider:before {
   display: flex;
   align-items: flex-end;
   padding-right: 10px;
-  font-size: 11pt;
+  font-size: 9.5pt; /* Reduzido de 11pt */
   line-height: 1.2;
 }
 
@@ -450,8 +451,8 @@ input:checked + .slider:before {
 .print-col .value {
   flex-grow: 1;
   border-bottom: 1px dotted transparent;
-  min-height: 19px;
-  font-size: 11pt;
+  min-height: 15px; /* Reduzido de 19px */
+  font-size: 9.5pt; /* Reduzido de 11pt */
   font-weight: 400;
   color: #333333;
 }
@@ -465,30 +466,29 @@ input:checked + .slider:before {
 
 /* Faixa de Dependentes */
 .banner-dependentes {
-  margin-top: 25px;
-  margin-bottom: 15px;
+  margin-top: 12px; /* Reduzido de 25px */
+  margin-bottom: 8px; /* Reduzido de 15px */
 }
 
 .print-dependent-block {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   width: 100%;
 }
 
 /* Separador de Dependentes */
 .print-separator {
-  height: 8px;
-  background-color: #e2e8f0;
-  margin: 15px 0;
-  border-radius: 1px;
+  height: 1px; /* Reduzido de 8px */
+  background-color: #d1d5db; /* Cor mais suave e fina */
+  margin: 8px 0; /* Reduzido de 15px */
 }
 
 /* Rodapé de Assinatura */
 .print-footer {
-  margin-top: 60px;
+  margin-top: 20px; /* Reduzido de 60px */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 20px; /* Reduzido de 40px */
   width: 100%;
 }
 
@@ -502,11 +502,11 @@ input:checked + .slider:before {
 .signature-line {
   width: 100%;
   border-bottom: 1.5px solid #000;
-  margin-bottom: 8px;
+  margin-bottom: 4px; /* Reduzido de 8px */
 }
 
 .signature-text {
-  font-size: 10pt;
+  font-size: 8.5pt; /* Reduzido de 10pt */
   font-weight: 500;
   letter-spacing: 0.5px;
   text-align: center;
@@ -519,7 +519,7 @@ input:checked + .slider:before {
   /* Configuração da Página A4 */
   @page {
     size: A4 portrait;
-    margin: 15mm 15mm 15mm 15mm;
+    margin: 0; /* Margem zero no navegador para controle absoluto pelo CSS */
   }
 
   /* Oculta apenas os elementos do painel de controle e menu */
@@ -547,14 +547,16 @@ input:checked + .slider:before {
   /* Define o painel de impressão como elemento principal */
   .print-page {
     width: 100% !important;
-    min-height: auto !important;
+    height: 297mm !important; /* Altura A4 exata */
+    max-height: 297mm !important;
     box-shadow: none !important;
-    padding: 0 !important;
+    padding: 12mm !important; /* Margem de impressão robusta interna */
     margin: 0 !important;
     background: #ffffff !important;
     color: #000000 !important;
     transform: none !important;
     display: block !important;
+    overflow: hidden !important; /* Evita que quebre em segunda folha */
   }
 
   /* Garante cores de fundo e impressões corretas */
